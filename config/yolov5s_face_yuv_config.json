@@ -1,0 +1,38 @@
+{
+  "model_type": "ONNX",
+  "quant": {
+    "precision_analysis": true,
+    "calibration_method": "MinMax",
+    "precision_analysis_method": "EndToEnd",
+    "precision_analysis_mode": "NPUBackend",
+    "input_configs": [
+      {
+        "tensor_name": "input",
+        "calibration_dataset": "./dataset/face_10.tar.gz",
+        "calibration_size": 10,
+        "calibration_format": "Image",
+        "calibration_mean": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "calibration_std": [255.0,255.0,255.0]
+      }
+    ],
+    "layer_configs": [],
+    "conv_bias_data_type": "S32"
+  },
+  "input_processors": [
+    {
+      "tensor_name": "input",
+      "src_format": "YUV420SP",
+      "src_dtype": "U8",
+      "src_layout": "NCHW",
+      "csc_mode": "LimitedRange",
+      "tensor_format": "RGB"
+    }
+  ],
+  "compiler": {
+    "check": 0
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "model_type": "ONNX",
+  "quant": {
+    "precision_analysis": true,
+    "calibration_method": "MinMax",
+    "precision_analysis_method": "EndToEnd",
+    "precision_analysis_mode": "NPUBackend",
+    "input_configs": [
+      {
+        "tensor_name": "images",
+        "calibration_dataset": "./dataset/coco_4.tar",
+        "calibration_size": -1,
+        "calibration_format": "Image",
+        "calibration_mean": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "calibration_std": [
+          255.0000457763672,
+          255.0000457763672,
+          255.0000457763672
+        ]
+      }
+    ],
+    "layer_configs": [],
+    "conv_bias_data_type": "S32"
+  },
+  "input_processors": [
+    {
+      "tensor_name": "images",
+      "src_format": "YUV420SP",
+      "src_dtype": "U8",
+      "src_layout": "NCHW",
+      "csc_mode": "LimitedRange",
+      "tensor_format": "RGB"
+    }
+  ],
+  "output_processors": [
+    {
+      "tensor_name": "/model.31/m.0/Conv_output_0",
+      "dst_perm": [0,2,3,1]
+    },
+    {
+      "tensor_name": "/model.31/m.1/Conv_output_0",
+      "dst_perm": [0,2,3,1]
+    },
+    {
+      "tensor_name": "/model.31/m.2/Conv_output_0",
+      "dst_perm": [0,2,3,1]
+    },
+    {
+      "tensor_name": "/model.31/m.3/Conv_output_0",
+      "dst_perm": [0,2,3,1]
+    }
+  ],
+  "compiler": {
+    "check": 2
+  }
+}

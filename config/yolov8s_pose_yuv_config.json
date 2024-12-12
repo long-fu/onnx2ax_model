@@ -1,0 +1,65 @@
+{
+  "model_type": "ONNX",
+  "target_hardware": "AX650",
+  "quant": {
+    "precision_analysis": true,
+    "calibration_method": "MinMax",
+    "precision_analysis_method": "EndToEnd",
+    "precision_analysis_mode": "NPUBackend",
+    "input_configs": [
+      {
+        "tensor_name": "images",
+        "calibration_dataset": "./dataset/test_pose.tar",
+        "calibration_size": -1,
+        "calibration_format": "Image",
+        "calibration_mean": [0.0,0.0,0.0],
+        "calibration_std": [
+          255.0000457763672,
+          255.0000457763672,
+          255.0000457763672
+        ]
+      }
+    ],
+    "layer_configs": [],
+    "conv_bias_data_type": "S32"
+  },
+  "input_processors": [
+    {
+      "tensor_name": "images",
+      "src_format": "YUV420SP",
+      "src_dtype": "U8",
+      "src_layout": "NCHW",
+      "csc_mode": "LimitedRange",
+      "tensor_format": "RGB"
+    }
+  ],
+  "output_processors": [
+    {
+      "tensor_name": "/model.22/Concat_1_output_0",
+      "dst_perm": [0,2,3,1]
+    },
+    {
+      "tensor_name": "/model.22/Concat_2_output_0",
+      "dst_perm": [0,2,3,1]
+    },
+    {
+      "tensor_name": "/model.22/Concat_3_output_0",
+      "dst_perm": [0,2,3,1]
+    },
+    {
+      "tensor_name": "/model.22/cv4.0/cv4.0.2/Conv_output_0",
+      "dst_perm": [0,2,3,1]
+    },
+    {
+      "tensor_name": "/model.22/cv4.1/cv4.1.2/Conv_output_0",
+      "dst_perm": [0,2,3,1]
+    },
+    {
+      "tensor_name": "/model.22/cv4.2/cv4.2.2/Conv_output_0",
+      "dst_perm": [0,2,3,1]
+    }
+  ],
+  "compiler": {
+    "check": 2
+  }
+}
