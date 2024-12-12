@@ -7,3 +7,4 @@
 [基于 AX650N 部署 YOLO11](https://zhuanlan.zhihu.com/p/772269394)
 [基于 AX650N 部署 YOLOv9](https://zhuanlan.zhihu.com/p/683622844)
 [基于 AX620Q 部署 YOLOv8](https://zhuanlan.zhihu.com/p/683050593)
+[基于 AX650N 的 M.2智能推理卡](https://zhuanlan.zhihu.com/p/11622943108)
